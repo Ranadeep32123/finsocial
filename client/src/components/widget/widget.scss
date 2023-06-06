@@ -1,0 +1,58 @@
+@import "../../style.scss";
+.widgets {
+  @include themify($themes) {
+    display: flex;
+    flex: 1;
+    box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 10px 10px 20px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 10px 10px 20px 0px rgba(200, 200, 200, 0.1);
+    height: 120px;
+    margin: 10px;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 5%;
+    background-color: themed("bg");
+
+    .left,
+    .right {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .title {
+        font-size: 14px;
+        font-weight: 100;
+        color: themed("textColor");
+      }
+      .counter {
+        font-size: 28px;
+        font-weight: 300;
+        color: themed("textColor");
+      }
+      .link {
+        width: max-content;
+        font-size: 12px;
+        border-bottom: 1px solid gray;
+      }
+      .percentage {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+
+        &.positive {
+          color: green;
+        }
+        &.negetive {
+          color: red;
+        }
+      }
+      .icon {
+        font-size: 18px;
+        padding: 5px;
+        background-color: rgb(197, 116, 173);
+        border-radius: 5px;
+        align-self: flex-end;
+      }
+    }
+  }
+}

@@ -1,0 +1,132 @@
+@import "../../style.scss";
+
+.leftBar {
+  @include themify($themes) {
+    flex: 2;
+    position: sticky;
+    top: 70px;
+    height: calc(100vh - 70px);
+    overflow: scroll;
+    background-color: themed("bg");
+    color: themed("textColor");
+
+    @include mobile {
+      display: none;
+    }
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    .container {
+      padding: 20px;
+
+      hr {
+        margin: 20px 0px;
+        border: none;
+        height: 0.5px;
+        background-color: themed("border");
+      }
+
+      .menu {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        span {
+          font-size: 12px;
+        }
+
+        .user {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+
+          span {
+            font-size: 14px;
+          }
+        }
+
+        .item {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+
+          img {
+            width: 30px;
+          }
+
+          span {
+            font-size: 14px;
+            color: themed("textColor");
+          }
+        }
+        .username {
+          font-size: 20px;
+          position: relative;
+          left: 5px;
+          font-weight: 600;
+        }
+        .authentic {
+          display: flex;
+          gap: 10px;
+          flex-wrap: wrap;
+          .verification {
+            margin-top: 10px;
+            align-items: center;
+
+            display: flex;
+            background-color: rgb(4, 109, 48);
+            padding: 1px 2px;
+            width: 50px;
+            border-radius: 5px;
+            border: #ffffff 1px;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 400;
+            position: relative;
+            top: -15px;
+            left: 5px;
+            font-weight: 600;
+            color: #ffffff;
+          }
+          .scoreboard {
+            margin-top: 10px;
+
+            display: flex;
+            background-color: rgb(170, 94, 32);
+            padding: 1px 2px;
+            width: 50px;
+            border-radius: 5px;
+            border: #ffffff 1px;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 400;
+            position: relative;
+            top: -15px;
+            left: 5px;
+            font-weight: 600;
+            color: #ffffff;
+          }
+          .follow {
+            display: flex;
+            position: relative;
+            top: -15px;
+            gap: 10px;
+            .followers {
+              font-size: 10px;
+              color: themed("textColorSoft");
+            }
+          }
+        }
+      }
+    }
+  }
+}

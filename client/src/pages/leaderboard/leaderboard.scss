@@ -1,0 +1,22 @@
+@import "../../style.scss";
+
+.homepage-leader {
+  @include themify($themes) {
+    background-color: themed("bgSoft");
+
+    .home-container-leader {
+      display: flex;
+
+      .left-container {
+        flex: 2;
+      }
+
+      .right-container {
+        flex: 9;
+        margin: 10px;
+        display: flex;
+        flex-wrap: wrap;
+      }
+    }
+  }
+}
