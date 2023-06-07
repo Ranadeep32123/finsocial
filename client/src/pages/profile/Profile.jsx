@@ -12,12 +12,14 @@ import Posts from "../../components/posts/Posts";
 import { useQuery } from "@tanstack/react-query";
 import { axiosInstance } from "../../fetchdata";
 import { useLocation } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../context/authContext";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-
+import Update from "../../components/update/update";
 const Profile = () => {
   const { currentUser } = useContext(AuthContext);
+
+  const [update, setUpdate] = useState(false);
 
   const location = useLocation();
   const userId = parseInt(location.pathname.split("/")[2]);
@@ -55,7 +57,6 @@ const Profile = () => {
       },
     }
   );
-  console.log(relationshipData);
 
   const handleFollow = () => {
     mutation.mutate(relationshipData.includes(currentUser.id));
@@ -69,7 +70,11 @@ const Profile = () => {
         <>
           <div className="images">
             <img src={data.cover_pic} alt="" className="cover" />
-            <img src={data.profile_pic} alt="" className="profilePic" />
+            <img
+              src={`/upload/` + data.profile_pic}
+              alt=""
+              className="profilePic"
+            />
           </div>
           <div className="profileContainer">
             <div className="uInfo">
@@ -104,8 +109,14 @@ const Profile = () => {
                 </div>
                 {relationIsLoading ? (
                   "loading"
-                ) : userId == currentUser.id ? (
-                  <button>Edit Profile</button>
+                ) : userId === currentUser.id ? (
+                  <button
+                    onClick={() => {
+                      setUpdate(true);
+                    }}
+                  >
+                    Edit Profile
+                  </button>
                 ) : relationshipData &&
                   relationshipData.includes(currentUser.id) ? (
                   <button onClick={handleFollow}>Following</button>
@@ -122,6 +133,7 @@ const Profile = () => {
           </div>
         </>
       )}
+      {update && <Update setUpdate={setUpdate} user={currentUser} />}
     </div>
   );
 };

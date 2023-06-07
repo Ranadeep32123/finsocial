@@ -4,11 +4,13 @@ import "./posts.scss";
 import { useQuery } from "@tanstack/react-query";
 
 const Posts = ({ userId }) => {
+  const route = userId ? `/posts?userId=${userId}` : "/posts";
   const { isLoading, error, data } = useQuery(["posts"], () =>
-    axiosInstance.get("/posts").then((res) => {
+    axiosInstance.get(route).then((res) => {
       return res.data;
     })
   );
+
   return (
     <div className="posts">
       {error
